@@ -11,7 +11,7 @@
         var userInput;
         var message;
         // Enter : seize  
-         randomNumber = Math.floor(Math.random() * 100);
+         randomNumber = Math.floor(Math.random() * 101);
          userInput = prompt("seize a number");
         // treatment 
         var n = parseInt(userInput);
@@ -21,11 +21,17 @@
             
         }
 
-        else{
+        else if (randomNumber < userInput) {
 
             message = userInput + "  " + "is greater than" + "  " + randomNumber;
         }
+
+        else {
+            message = "You guessed it right" + " " + "!! Bravo !";
+
+        }
         // exit : display
+        console.log(randomNumber);
         alert(message);
     </script>
 </head>
