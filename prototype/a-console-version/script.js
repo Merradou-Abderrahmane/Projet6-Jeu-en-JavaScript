@@ -9,7 +9,7 @@
   var lowerLimit = 1;
   var upperLimit = 100;
   var tries = 10;
-  var answer = Math.floor(Math.random() * 100);
+  var answer = Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
   var message = 'Guess a number between ' + lowerLimit + ' and ' + upperLimit + ':';
    // treatment
   // Keep prompting the user for a guess until the game ends.
