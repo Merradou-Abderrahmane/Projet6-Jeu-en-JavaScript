@@ -1,62 +1,61 @@
-// Declaring variables
-var lowerLimit;
-var upperLimit;
-var tries;
+//  Declaring variabels
 var answer;
-var guess;
-var message;
-// Enter : seize
-var lowerLimit = 1;
-var upperLimit = 100;
-var tries = 10;
-var answer = Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
-var message = 'Guess a number between ' + lowerLimit + ' and ' + upperLimit + ':';
- // treatment
-// Keep prompting the user for a guess until the game ends.
-while (tries > 0) {
-    // Prompt the user for a guess.
-    guess = prompt(message);
-    
-    // If the cancel button was pushed, let the user know the game is ending and
-    // break out of the loop.
-    if (guess == null) {
-        alert('Quitting game now.');
-        break;
-    }
-    // If the guess is a number...
-    else if (isFinite(guess)) {
+var tries;
+var attempsOutput;
+var winMessage;
+var itIsSmall;
+var itIsBigger;
 
-        // If the guess is less than the range let the user know.
-        if (guess < lowerLimit) {
-            alert('Your guess should be no less than ' + lowerLimit + '.');
-        }
-        // If the guess is greater than the range let the user know.
-        else if (guess > upperLimit) {
-            alert('Your guess should be no greater than ' + upperLimit + '.');
-        }
-        // If the guess is too high let the user know.
-        else if (guess > answer) {
-            alert('Your guess is too high.');
-        }
-        // If the guess is too low let the user know.
-        else if (guess < answer) {
-            alert('Your guess is too low');
-        }
-        // If none of the other cases were true that means the answer must have
-        // been guessed. so let the user know and break out of the loop.
-        else {
-            alert('Great job, you got it!');
-            break;
-        }
-    }
-    // If the guess is not a number, let the user know.
-    else {
-        alert('You must enter a number as a guess.');
-    }
-    
-    tries = tries - 1;
+var lostMessage = "Game over";
+var tentatives = document.getElementById("tentatives");
+var message = document.getElementById("message")
+// Seize 
+answer = Math.floor(Math.random() * 100+1);
+tries =10;
+function writeattempts () {
+    tentatives.innerHTML = tries;
 }
 
-if (tries == 0) {
-    alert('You ran out of tries.  The number was ' + answer + '.');
+
+function onSubmit (){
+    --tries;
+    attempsOutput = 10 - tries;
+
+    if(tries > 0){
+        var userInput = document.getElementById("deviner-input").value;
+
+        if(isNaN(userInput) || userInput== undefined){
+            alert("Please Enter a Number!")
+        } else {
+            isCorrect(userInput)
+        }
+        userInput.value = ""
+    } else {
+        message.innerHTML = lostMessage
+        tentatives.innerHTML = 0;
+    }
+}
+
+function isCorrect(userInput) {
+        
+     itIsSmall = "My number is lees than" + " " + userInput + " , try again!"
+     itIsBigger = "My number is greater than" + " " + userInput + " , try again!"
+        if (userInput == answer){
+            if(tries >= 8){
+                winMessage = 'Bravo, you are a genius !!!'
+            } else {
+                winMessage = "Congratulations, you won after " + attempsOutput + " " + "tries" ;
+            }
+            message.innerHTML = winMessage
+
+        } else if (userInput > answer){
+            message.innerHTML = itIsSmall
+            writeattempts() 
+
+        } else if (userInput < answer){
+            message.innerHTML = itIsBigger
+            writeattempts() 
+
+        } 
+
 }

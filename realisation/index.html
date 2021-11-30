@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guessing Game</title>
-   
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Guessing game</title>
 </head>
 <body>
-   <div id="container">
-    <p>Guess a number between 1-100 </p>
-    
-    <p id="outputtext">Enter a number below</p>
-    <input type="text" id="userInput"><button id="btn">Enter</button>
-   </div> 
-
-   <script src="script.js"></script>
+    <div class="container">
+        <div class="box">
+            <h1>Guessing game</h1>
+            <p class="tries">Tries left : <span id="tentatives">10</span></p>
+            <p class="subtitle">Guess a number between 1-100</p>
+            <input id="deviner-input" type="text" placeholder="seize a number">
+            <button onclick=onSubmit() class="btn">Guess</button>
+            <p id="message"></p>
+        </div>
+    </div>
 </body>
+<script src="script.js"></script>
 </html>
