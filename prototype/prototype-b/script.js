@@ -1,30 +1,26 @@
-// declaration des variables 
-var btn;
-var output;
-var number;
-var nombreDeviner;
+// Declaring variabeles 
+var btn ;
+var output ;
+var number ;
+var guessedNumber ;
 
-
- // entrer: saiser 
+ // seize
  btn = document.getElementById('btn');
- output = document.getElementById('outputtext');
+ output = document.getElementById('outputText');
  number = Math.floor(Math.random() * 100);
- 
+  console.log(number);
  // traitement 
 
-btn.addEventListener('click', function(){
+   function play(){
+
+    guessedNumber=document.getElementById("userInput").value;
+   if ( guessedNumber == number ){ 
+     output.innerHTML = "Félicitations" 
+   }else 
+   if (guessedNumber < number) {
+   output.innerHTML ="c'est number est plus petit "
+   }else {
+     output.innerHTML= "c'est number est plus grand"
+   }
   
-  nombreDeviner = document.getElementById('userInput').value;
-  if (nombreDeviner == number){
-    output.innerHTML = 'Correct'
-  } else{
-    if (nombreDeviner < number){
-        output.innerHTML = "le nombre que vous avez choisir est plus petit"
-    }
-    else {
-      output.innerHTML = "le nombre que vous avez choisir est plus grand"
-    }
-
-  } 
-
-});
+ };

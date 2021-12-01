@@ -5,11 +5,11 @@ var attempsOutput;
 var winMessage;
 var itIsSmall;
 var itIsBigger;
-
+// Seize 
 var lostMessage = "Game over";
 var tentatives = document.getElementById("tentatives");
 var message = document.getElementById("message")
-// Seize 
+
 answer = Math.floor(Math.random() * 100+1);
 tries =10;
 function writeattempts () {
